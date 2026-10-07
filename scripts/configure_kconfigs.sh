@@ -43,6 +43,13 @@ cd common
             ;;
     esac
     
+    # 添加 Droidspaces Kconfig 片段
+if [ -f "../../tools/custom.fragment" ]; then
+    echo ">>> Appending Droidspaces Kconfigs..."
+    cat "../../tools/custom.fragment" >> "$COMBINED_FRAG"
+    echo "" >> "$COMBINED_FRAG"
+fi
+    
     # 3. DYNAMIC FRAGMENT ASSEMBLY
     if [ "$ENABLE_NOMOUNT" = "true" ] && [ -f "../../tools/nomount.fragment" ]; then
         echo ">>> Appending NoMount Kconfigs..."
