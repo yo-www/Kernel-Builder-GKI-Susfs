@@ -8,6 +8,15 @@ set -euo pipefail
 echo ">>> Applying custom source code patches..."
 
 # cd kernel_workspace/common
+# 进入内核源码目录
+cd kernel_workspace/common
+
+# ========================================================================
+# 应用 Droidspaces kABI 兼容性补丁（6.6 内核，678 槽位）
+# ========================================================================
+echo ">>> Applying Droidspaces kABI patch (6_7_8)..."
+git apply --verbose "${GITHUB_WORKSPACE}/scripts/patches/001.GKI-below-6.12-fix_sysvipc_kabi_6_7_8.patch" \
+  || patch -p1 < "${GITHUB_WORKSPACE}/scripts/patches/001.GKI-below-6.12-fix_sysvipc_kabi_6_7_8.patch"
 
 # ========================================================================
 # PLACEHOLDER: Add your raw source code modifications here
